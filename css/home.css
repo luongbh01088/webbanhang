@@ -1,10 +1,18 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(to right, #e3f2fd, #cfd9df);
+    background: linear-gradient(120deg, #e3f2fd, #cfd9df);
+    background-size: 200% 200%;
+    animation: gradientShift 10s ease infinite;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .header {
@@ -16,12 +24,24 @@ body {
     border-radius: 20px;
     max-width: 700px;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    animation: fadeInDown 1s ease;
+}
+
+@keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .header h1 {
     font-size: 2.8rem;
     margin-bottom: 15px;
     color: #333;
+    transition: color 0.3s;
+}
+
+.header h1:hover {
+    color: #007bff;
+    cursor: pointer;
 }
 
 .header p {
@@ -38,14 +58,35 @@ body {
     border-radius: 8px;
     text-decoration: none;
     font-size: 1rem;
-    transition: background 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    transition: background 0.3s ease, transform 0.2s;
 }
 
 .shop-btn:hover {
     background-color: #0056b3;
+    transform: scale(1.05);
 }
 
-/* ✅ Sửa footer cho cân giữa */
+.shop-btn::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 100%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+}
+
+.shop-btn:active::after {
+    width: 200px;
+    height: 200px;
+    transition: 0s;
+}
+
 footer {
     text-align: center;
     margin-top: auto;
@@ -53,4 +94,10 @@ footer {
     background-color: transparent;
     color: #333;
     font-size: 0.9rem;
+    animation: fadeInUp 1.5s ease;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
