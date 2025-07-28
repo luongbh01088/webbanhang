@@ -8,7 +8,7 @@
 <body>
     <div class="wrapper">
         <div class ="header">
-           <h1>Welcome to ShoeZone</h1>
+           <h1>Welcome to LuongTrancuto</h1>
     <p>Discover the latest trends in footwear. Shop now for the best deals on sneakers, boots, sandals, and more!</p>
     </div>
 </body>
